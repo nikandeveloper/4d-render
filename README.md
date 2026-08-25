@@ -1,5 +1,5 @@
 # 4d-render
-A 4D render with its own file format '.dots' reading four dimensional data in a specific format then projecting it into 3D cordinates and then projecting those to 2D points and rendering these at last. along with 4D rotation 
+A 4D render with its own file format '.dots' reading four dimensional data in a specific format then projecting it into 3D coordinates and then projecting those to 2D points and rendering these at last. along with 4D rotation 
 
 
 ## Features
@@ -43,10 +43,10 @@ Surfaces:
 
 ## how to use
 install requirements:
-     pip install requirements.txt
+     pip install -r requirements.txt
    
 load you data into data.dots
    
 and run 4d_render.py
 
-The project is right now eductional and therefore fully free of any licensing.
+The project is right now educational and therefore fully free of any licensing.
