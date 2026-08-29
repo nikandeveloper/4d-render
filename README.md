@@ -49,6 +49,17 @@ Surfaces:
 
     s vertex1 vertex2 vertex3
 
+
+
+## how does it work
+This project uses plane/hyperplane projection to turn 4D vertices into 2D points on a normal screen.
+![4D renderer pipeline](assets/diagram_rendering.png)
+
+The rotation is simply rotating along rotation planes:
+![4D renderer pipeline](assets/diagram_rotating.png)
+
+    
+
 ## how to use
 install requirements:
      pip install -r requirements.txt
