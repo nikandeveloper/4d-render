@@ -49,4 +49,8 @@ load you data into data.dots
    
 and run 4d_render.py
 
+you might have to tackle a bit with the position and rotation to see the tesseract 
+
+![Tesseract rendered in 4D](assets/tesseract.png)
+
 The project is right now educational and therefore fully free of any licensing.
