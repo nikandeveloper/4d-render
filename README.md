@@ -30,6 +30,11 @@ A 4D render with its own file format '.dots' reading four dimensional data in a 
 | I / K | Rotate WY |
 | O / L | Rotate ZY |
 
+## 4D Rotation
+
+![Tesseract rotating in 4D](assets/tesseract.gif)
+
+
 ## `.dots` format
 
 Vertices:
