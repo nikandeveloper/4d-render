@@ -1,6 +1,8 @@
 # 4d-render
 A 4D render with its own file format '.dots' reading four dimensional data in a specific format then projecting it into 3D coordinates and then projecting those to 2D points and rendering these at last. along with 4D rotation 
 
+![Tesseract rendered in 4D](assets/tesseract.png)
+
 
 ## Features
 
@@ -52,6 +54,5 @@ and run 4d_render.py
 
 you might have to tackle a bit with the position and rotation to see the tesseract 
 
-![Tesseract rendered in 4D](assets/tesseract.png)
 
 The project is right now educational and therefore fully free of any licensing.
