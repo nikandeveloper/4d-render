@@ -16,6 +16,7 @@ A 4D render with its own file format '.dots' reading four dimensional data in a 
 
 | Key | Action |
 |---|---|
+| C / C | Toggle between camera rotation or object rotation
 | W / S | Move camera along Y |
 | A / D | Move camera along X |
 | Q / E | Move camera along Z |
