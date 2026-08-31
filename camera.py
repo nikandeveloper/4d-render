@@ -26,6 +26,7 @@ class Camera4D:
             rot_result = transform.ZY(self.normal_vector, angle)
         else:
             print("Error: no such rotational plate, valid planes: XY, XZ, XW, WZ, WY, ZY")
+            return None
 
         if rot_result is None:
             print("Error: unacceptable angle")
