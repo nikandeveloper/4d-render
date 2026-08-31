@@ -76,73 +76,73 @@ while run:
 
             if event.key == pygame.K_r:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XY(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("XY", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XY(mesh_4d.vertices[i], changing_angle)
             if event.key == pygame.K_f:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XY(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("XY", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XY(mesh_4d.vertices[i], -changing_angle)    
             if event.key == pygame.K_t:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XZ(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("XZ", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XZ(mesh_4d.vertices[i], changing_angle)
             if event.key == pygame.K_g:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XZ(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("XZ", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XZ(mesh_4d.vertices[i], -changing_angle)    
             if event.key == pygame.K_y:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XW(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("XW", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XW(mesh_4d.vertices[i], changing_angle)
             if event.key == pygame.K_h:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.XW(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("XW", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.XW(mesh_4d.vertices[i], -changing_angle)
             if event.key == pygame.K_u:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.WZ(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("WZ", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.WZ(mesh_4d.vertices[i], changing_angle)    
             if event.key == pygame.K_j:
                 if rot_cam: 
-                    camera = Camera4D(camera.position, transform.WZ(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("WZ", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
                     mesh_4d.vertices[i] = transform.WZ(mesh_4d.vertices[i], -changing_angle)    
             if event.key == pygame.K_i:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.WY(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("WY", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):  
                     mesh_4d.vertices[i] = transform.WY(mesh_4d.vertices[i], changing_angle)   
             if event.key == pygame.K_k:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.WY(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("WY", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):
                     mesh_4d.vertices[i] = transform.WY(mesh_4d.vertices[i], -changing_angle)    
             if event.key == pygame.K_o:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.ZY(camera.normal_vector, changing_angle), camera.distance)
+                    camera = camera.rotate("ZY", changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):  
                     mesh_4d.vertices[i] = transform.ZY(mesh_4d.vertices[i], changing_angle)    
             if event.key == pygame.K_l:
                 if rot_cam:
-                    camera = Camera4D(camera.position, transform.ZY(camera.normal_vector, -changing_angle), camera.distance)
+                    camera = camera.rotate("ZY", -changing_angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):  
                     mesh_4d.vertices[i] = transform.ZY(mesh_4d.vertices[i], -changing_angle)
