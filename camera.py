@@ -8,7 +8,7 @@ class Camera4D:
     distance: float
 
     def move(self, speed: Vector4):
-        return Vector4(self.position.add(speed), self.normal_vector, self.distance)
+        return Camera4D(self.position.add(speed), self.normal_vector, self.distance)
 
     def rotate(self, plane: string, angle):
         if plane == "XY":
