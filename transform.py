@@ -53,17 +53,17 @@ def XW(a: "Vector4", angle: float):
 def WZ(a: "Vector4", angle: float):
     v = Vector2(a.z, a.w)
     j, d = rot_plane(v, angle)
-    return Vector4(a.x, a.y, d, j)
+    return Vector4(a.x, a.y, j, d)
 
 def WY(a: "Vector4", angle: float):
-    v = Vector2(a.w, a.y)
+    v = Vector2(a.y, a.w)
     j, d = rot_plane(v, angle)
-    return Vector4(a.x, d, a.z, j)
+    return Vector4(a.x, j, a.z, d)
 
 def ZY(a: "Vector4", angle: float):
-    v = Vector2(a.z, a.y)
+    v = Vector2(a.y, a.z)
     j, d = rot_plane(v, angle)
-    return Vector4(a.x, d, j, a.w)
+    return Vector4(a.x, j, d, a.w)
 
 
 def scaled(point: "Vector2", scale: int, screen_size: (int,int)):
