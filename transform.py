@@ -46,7 +46,7 @@ def XZ(a: "Vector4", angle: float):
     return Vector4(j, a.y, d, a.w)
 
 def XW(a: "Vector4", angle: float):
-    v = Vector2(a.x, a.z)
+    v = Vector2(a.x, a.w)
     j, d = rot_plane(v, angle)
     return Vector4(j, a.y, a.z, d)
 
