@@ -165,9 +165,7 @@ while run:
     for e in edges:
      if vertices_2d[e.a] is not None and vertices_2d[e.b] is not None:
        start_pos = transform.scaled(vertices_2d[e.a], scale, window.get_size()).toTuple()
-       print(start_pos)
        end_pos = transform.scaled(vertices_2d[e.b], scale, window.get_size()).toTuple()
-       print(end_pos)
        pygame.draw.line(window, (255, 255, 255), start_pos, end_pos)
 
     for s in faces:
