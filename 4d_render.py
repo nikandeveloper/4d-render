@@ -53,21 +53,21 @@ while run:
             # CAMERA MOVEMENT
 
             if event.key == pygame.K_w:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_up)
             if event.key == pygame.K_s:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_down)
             if event.key == pygame.K_q:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_backward)
             if event.key == pygame.K_e:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_forward)
             if event.key == pygame.K_a:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_left)
             if event.key == pygame.K_d:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_right)
             if event.key == pygame.K_z:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_w_p)
             if event.key == pygame.K_x:
-                camera = Camera4D(camera.position.add(speed_up), camera.normal_vector, camera.distance)
+                camera = camera.move(speed_w_m)
 
             if event.key == pygame.K_c:
                 rot_cam = not rot_cam
