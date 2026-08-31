@@ -11,7 +11,7 @@ class Camera4D:
     def move(self, speed: Vector4):
         return Camera4D(self.position.add(speed), self.normal_vector, self.distance)
 
-    def rotate(self, plane: string, angle):
+    def rotate(self, plane: str, angle):
         if plane == "XY":
             rot_result = transform.XY(self.normal_vector, angle)
         elif plane == "XZ":
