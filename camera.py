@@ -1,5 +1,6 @@
 from vector import *
 from dataclasses import dataclass
+import transform
 
 @dataclass
 class Camera4D:
@@ -12,17 +13,17 @@ class Camera4D:
 
     def rotate(self, plane: string, angle):
         if plane == "XY":
-            rot_result = XY(normal_vector, angle)
+            rot_result = transform.XY(normal_vector, angle)
         elif plane == "XZ":
-            rot_result = XZ(normal_vector, angle)
+            rot_result = transform.XZ(normal_vector, angle)
         elif plane == "XW":
-            rot_result = XW(normal_vector, angle)
+            rot_result = transform.XW(normal_vector, angle)
         elif plane == "WZ":
-            rot_result = WZ(normal_vector, angle)
+            rot_result = transform.WZ(normal_vector, angle)
         elif plane == "WY":
-            rot_result = WY(normal_vector, angle)            
+            rot_result = transform.WY(normal_vector, angle)            
         elif plane == "ZY":
-            rot_result = ZY(normal_vector, angle)
+            rot_result = transform.ZY(normal_vector, angle)
         else:
             print("Error: no such rotational plate, valid planes: XY, XZ, XW, WZ, WY, ZY")
 
