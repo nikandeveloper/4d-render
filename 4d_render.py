@@ -153,7 +153,7 @@ while run:
     window.fill((0,0,0))
     if geometry_changed:
         mesh_2d = project(camera, mesh_4d)
-        geometry_changed = True
+        geometry_changed = False
 
     vertices_2d = mesh_2d.vertices
 
