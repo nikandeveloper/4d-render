@@ -66,7 +66,7 @@ def ZY(a: "Vector4", angle: float):
     return Vector4(a.x, j, d, a.w)
 
 
-def rotate(vector: "Vector4D", plane: string, angle: float):
+def rotate(vector: "Vector4D", plane: str, angle: float):
         if plane == "XY":
             rot_result = XY(vector, angle)
         elif plane == "XZ":
