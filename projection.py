@@ -41,7 +41,6 @@ def project(camera: "Camera4D", mesh: "Mesh4D"):
 
 
         for j in range(2):
-          print(j)
           if j == 0:
             current_vertex = Anew
           else:    
