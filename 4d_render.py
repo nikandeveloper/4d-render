@@ -27,8 +27,8 @@ geometry_changed = True
 speed = 0.05
 
 
-speed_up = Vector4(0, speed, 0, 0)
-speed_down = Vector4(0, -speed, 0, 0)
+speed_up = Vector4(0, -speed, 0, 0)
+speed_down = Vector4(0, speed, 0, 0)
 speed_right = Vector4(speed, 0, 0, 0)
 speed_left = Vector4(-speed, 0, 0, 0)
 speed_forward = Vector4(0, 0, speed, 0)
@@ -36,6 +36,32 @@ speed_backward = Vector4(0, 0, -speed, 0)
 speed_w_p = Vector4(0, 0, 0, speed)
 speed_w_m = Vector4(0, 0, 0, -speed)
 
+
+rotation_map = {
+    pygame.K_r: ("XY", changing_angle),
+    pygame.K_f: ("XY", -changing_angle),
+    pygame.K_t: ("XZ", changing_angle),
+    pygame.K_g: ("XZ", -changing_angle),
+    pygame.K_y: ("XW", changing_angle),
+    pygame.K_h: ("XW", -changing_angle),
+    pygame.K_u: ("WZ", changing_angle),
+    pygame.K_j: ("WZ", -changing_angle),
+    pygame.K_i: ("WY", changing_angle),
+    pygame.K_k: ("WY", -changing_angle),
+    pygame.K_o: ("ZY", changing_angle),
+    pygame.K_l: ("ZY", -changing_angle)
+}
+
+movement_map = {
+    pygame.K_w: speed_up,
+    pygame.K_s: speed_down,
+    pygame.K_q: speed_backward,
+    pygame.K_e: speed_forward,
+    pygame.K_a: speed_left,
+    pygame.K_d: speed_right,
+    pygame.K_z: speed_w_p,
+    pygame.K_x: speed_w_m
+}
 
 scale = 0.1
 
@@ -52,101 +78,27 @@ while run:
         if event.type == pygame.KEYDOWN:
             # CAMERA MOVEMENT
 
-            if event.key == pygame.K_w:
-                camera = camera.move(speed_up)
-            if event.key == pygame.K_s:
-                camera = camera.move(speed_down)
-            if event.key == pygame.K_q:
-                camera = camera.move(speed_backward)
-            if event.key == pygame.K_e:
-                camera = camera.move(speed_forward)
-            if event.key == pygame.K_a:
-                camera = camera.move(speed_left)
-            if event.key == pygame.K_d:
-                camera = camera.move(speed_right)
-            if event.key == pygame.K_z:
-                camera = camera.move(speed_w_p)
-            if event.key == pygame.K_x:
-                camera = camera.move(speed_w_m)
+            if event.key in movement_map:
+                speed_oriens = movement_map[event.key]
+                camera = camera.move(speed_oriens)
+                geometry_changed = True
+    
 
             if event.key == pygame.K_c:
                 rot_cam = not rot_cam
 
             # ROTATION PLANES
 
-            if event.key == pygame.K_r:
+            if event.key in rotation_map:
+                plane, angle = rotation_map[event.key]
+
                 if rot_cam:
-                    camera = camera.rotate("XY", changing_angle)
+                    camera = camera.rotate(plane, angle)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XY(mesh_4d.vertices[i], changing_angle)
-            if event.key == pygame.K_f:
-                if rot_cam:
-                    camera = camera.rotate("XY", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XY(mesh_4d.vertices[i], -changing_angle)    
-            if event.key == pygame.K_t:
-                if rot_cam:
-                    camera = camera.rotate("XZ", changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XZ(mesh_4d.vertices[i], changing_angle)
-            if event.key == pygame.K_g:
-                if rot_cam:
-                    camera = camera.rotate("XZ", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XZ(mesh_4d.vertices[i], -changing_angle)    
-            if event.key == pygame.K_y:
-                if rot_cam:
-                    camera = camera.rotate("XW", changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XW(mesh_4d.vertices[i], changing_angle)
-            if event.key == pygame.K_h:
-                if rot_cam:
-                    camera = camera.rotate("XW", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.XW(mesh_4d.vertices[i], -changing_angle)
-            if event.key == pygame.K_u:
-                if rot_cam:
-                    camera = camera.rotate("WZ", changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.WZ(mesh_4d.vertices[i], changing_angle)    
-            if event.key == pygame.K_j:
-                if rot_cam: 
-                    camera = camera.rotate("WZ", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.WZ(mesh_4d.vertices[i], -changing_angle)    
-            if event.key == pygame.K_i:
-                if rot_cam:
-                    camera = camera.rotate("WY", changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):  
-                    mesh_4d.vertices[i] = transform.WY(mesh_4d.vertices[i], changing_angle)   
-            if event.key == pygame.K_k:
-                if rot_cam:
-                    camera = camera.rotate("WY", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):
-                    mesh_4d.vertices[i] = transform.WY(mesh_4d.vertices[i], -changing_angle)    
-            if event.key == pygame.K_o:
-                if rot_cam:
-                    camera = camera.rotate("ZY", changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):  
-                    mesh_4d.vertices[i] = transform.ZY(mesh_4d.vertices[i], changing_angle)    
-            if event.key == pygame.K_l:
-                if rot_cam:
-                    camera = camera.rotate("ZY", -changing_angle)
-                else:
-                  for i in range(len(mesh_4d.vertices)):  
-                    mesh_4d.vertices[i] = transform.ZY(mesh_4d.vertices[i], -changing_angle)
-            geometry_changed = True
+                    mesh_4d.vertices[i] = transform.rotate(mesh_4d.vertices[i], plane, angle)
+            
+                geometry_changed = True
     
     
     
