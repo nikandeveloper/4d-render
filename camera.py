@@ -25,11 +25,10 @@ class Camera4D:
         elif plane == "ZY":
             rot_result = transform.ZY(self.normal_vector, angle)
         else:
-            print("Error: no such rotational plate, valid planes: XY, XZ, XW, WZ, WY, ZY")
-            return None
+            raise ValueError("Error: no such rotational plane, valid planes: XY, XZ, XW, WZ, WY, ZY")
 
         if rot_result is None:
-            print("Error: unacceptable angle")
+            raise ValueError("Error: unacceptable angle")
             return None
         else:
             return Camera4D(self.position , rot_result, self.distance)
