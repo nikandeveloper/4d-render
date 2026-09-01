@@ -66,6 +66,29 @@ def ZY(a: "Vector4", angle: float):
     return Vector4(a.x, j, d, a.w)
 
 
+def rotate(vector: "Vector4D", plane: string, angle: float):
+        if plane == "XY":
+            rot_result = XY(vector, angle)
+        elif plane == "XZ":
+            rot_result = XZ(vector, angle)
+        elif plane == "XW":
+            rot_result = XW(vector, angle)
+        elif plane == "WZ":
+            rot_result = WZ(vector, angle)
+        elif plane == "WY":
+            rot_result = WY(vector, angle)            
+        elif plane == "ZY":
+            rot_result = ZY(vector, angle)
+        else:
+            print("Error: no such rotational plate, valid planes: XY, XZ, XW, WZ, WY, ZY")
+
+        if rot_result is None:
+            print("Error: unacceptable angle")
+            return None
+        else:
+            return rot_result   
+
+
 def scaled(point: "Vector2", scale: int, screen_size: (int,int)):
     return Vector2(point.x* scale * screen_size[0] /2, -point.y* scale * screen_size[1] / 2)
 
