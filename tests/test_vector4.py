@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from vector import Vector4, Vector3, Vector2
+import math
 
 def test_vector_4d_subrtaction():
     a = Vector4(1, 2, 3, 4)
@@ -10,7 +16,7 @@ def test_vector_4d_addition():
     a = Vector4(1, 2, 3, 4)
     b = Vector4(0, 5, 8, 6)
 
-    assert a.add(b) == Vector4(6, 7, 11, 10)
+    assert a.add(b) == Vector4(1, 7, 11, 10)
 
 def test_vector_4d_dot():
     a = Vector4(1, 2, 3, 4)
@@ -27,7 +33,7 @@ def test_vector_4d_multiply():
 def test_vector_4d_length():
     a = Vector4(1, 2, 3, 4)
 
-    assert a.length() == (1 + 4 + 9 + 16)
+    assert a.length() == math.sqrt(1 + 4 + 9 + 16)
 
     
 def test_vector_4d_toTuple():
