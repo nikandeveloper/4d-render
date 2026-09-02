@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from vector import Vector4
 import transform
 
@@ -38,7 +43,9 @@ def test_rotation_XW():
 def test_rotation_WZ():
     v = Vector4(0, 0, 0, 1)
 
-    result = transform.rotate(v, "WZ", 90)
+    result = transform.rotate(v, "WZ", -90)
+
+    print(result)
 
     assert abs(result.w) < 0.00001
     assert abs(result.z-1) < 0.00001
@@ -49,7 +56,7 @@ def test_rotation_WZ():
 def test_rotation_WY():
     v = Vector4(0, 0, 0, 1)
 
-    result = transform.rotate(v, "WY", 90)
+    result = transform.rotate(v, "WY", -90)
 
     assert abs(result.w) < 0.00001
     assert abs(result.y-1) < 0.00001
@@ -60,7 +67,7 @@ def test_rotation_WY():
 def test_rotation_ZY():
     v = Vector4(0, 0, 1, 0)
 
-    result = transform.rotate(v, "ZY", 90)
+    result = transform.rotate(v, "ZY", -90)
 
     assert abs(result.z) < 0.00001
     assert abs(result.y-1) < 0.00001
