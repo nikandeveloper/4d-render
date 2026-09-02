@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from vector import Vector2
+import math
 
 def test_vector_2d_subrtaction():
     a = Vector2(1, 2)
@@ -10,7 +16,9 @@ def test_vector_2d_addition():
     a = Vector2(1, 2)
     b = Vector2(0, 5)
 
-    assert a.add(b) == Vector2(6, 7)
+    print(a.add(b))
+
+    assert a.add(b) == Vector2(1, 7)
 
 def test_vector_2d_dot():
     a = Vector2(1, 2)
@@ -27,7 +35,7 @@ def test_vector_2d_multiply():
 def test_vector_2d_length():
     a = Vector2(1, 2)
 
-    assert a.length() == (1 + 4)
+    assert a.length() == math.sqrt(1 + 4)
 
     
 def test_vector_2d_toTuple():
