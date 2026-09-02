@@ -1,10 +1,15 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from vector import Vector2
 from transform import scaled, angle_add
 
 def test_scaling():
     v = Vector2(1, 2)
     scale = 3
-    screen_size(50, 100)
+    screen_size = (50, 100)
 
     result = scaled(v, scale, screen_size)
 
