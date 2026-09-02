@@ -1,4 +1,10 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from vector import Vector3, Vector2
+import math
 
 def test_vector_3d_subrtaction():
     a = Vector3(1, 2, 3)
@@ -10,7 +16,7 @@ def test_vector_3d_addition():
     a = Vector3(1, 2, 3)
     b = Vector3(0, 5, 8)
 
-    assert a.add(b) == Vector3(6, 7, 11)
+    assert a.add(b) == Vector3(1, 7, 11)
 
 def test_vector_3d_dot():
     a = Vector3(1, 2, 3)
@@ -27,7 +33,7 @@ def test_vector_3d_multiply():
 def test_vector_3d_length():
     a = Vector3(1, 2, 3)
 
-    assert a.length() == (1 + 4 + 9)
+    assert a.length() == math.sqrt(1 + 4 + 9)
 
     
 def test_vector_3d_toTuple():
