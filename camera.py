@@ -11,7 +11,7 @@ class Camera4D:
     def move(self, speed: Vector4):
         return Camera4D(self.position.add(speed), self.normal_vector, self.distance)
 
-    def rotate(self, plane: str, angle):
+    def rotate_panel(self, plane: str, angle):
         if plane == "XY":
             rot_result = transform.XY(self.normal_vector, angle)
         elif plane == "XZ":
@@ -25,11 +25,18 @@ class Camera4D:
         elif plane == "ZY":
             rot_result = transform.ZY(self.normal_vector, angle)
         else:
-            raise ValueError("Error: no such rotational plane, valid planes: XY, XZ, XW, WZ, WY, ZY")
+            print("Error: no such rotational plate, valid planes: XY, XZ, XW, WZ, WY, ZY")
 
         if rot_result is None:
-            raise ValueError("Error: unacceptable angle")
+            print("Error: unacceptable angle")
             return None
         else:
             return Camera4D(self.position , rot_result, self.distance)
+
+
+    def rotate(self, rotation_matrix):
+        
+        rot_result = rotation_matrix * self.normal_vector
+
+        return Camera4D(self.position , rot_result, self.distance)            
             
