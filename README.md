@@ -58,7 +58,7 @@ This project uses plane/hyperplane projection to turn 4D vertices into 2D points
 The rotation is simply rotating along rotation planes:
 ![4D renderer pipeline](assets/diagram_rotating.png)
 
-The calculations related to 4D rotation and 4D to 3D rotation are:
+The calculations related to 4D rotation and 4D to 3D projection are:
 ![4D Calcualtions](assets/Calculations.pdf)
 
     
