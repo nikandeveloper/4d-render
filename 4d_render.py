@@ -5,6 +5,7 @@ from vector import *
 from geometry import *
 import transform 
 from projection import *
+import matrix
 
 
 mesh_4d = Mesh4D([], [], [])
@@ -37,7 +38,7 @@ speed_w_p = Vector4(0, 0, 0, speed)
 speed_w_m = Vector4(0, 0, 0, -speed)
 
 
-rotation_map = {
+rotation_map_old = {
     pygame.K_r: ("XY", changing_angle),
     pygame.K_f: ("XY", -changing_angle),
     pygame.K_t: ("XZ", changing_angle),
@@ -51,6 +52,22 @@ rotation_map = {
     pygame.K_o: ("ZY", changing_angle),
     pygame.K_l: ("ZY", -changing_angle)
 }
+
+rotation_map_new = {
+    pygame.K_r: matrix.rot_matrix(changing_angle, 0, 1),
+    pygame.K_f: matrix.rot_matrix(-changing_angle, 0, 1),
+    pygame.K_t: matrix.rot_matrix(changing_angle, 0, 2),
+    pygame.K_g: matrix.rot_matrix(-changing_angle, 0, 2),
+    pygame.K_y: matrix.rot_matrix(changing_angle, 0, 3),
+    pygame.K_h: matrix.rot_matrix(-changing_angle, 0, 3),
+    pygame.K_u: matrix.rot_matrix(changing_angle, 2, 3),
+    pygame.K_j: matrix.rot_matrix(-changing_angle, 2, 3),
+    pygame.K_i: matrix.rot_matrix(changing_angle, 1, 3),
+    pygame.K_k: matrix.rot_matrix(-changing_angle, 1, 3),
+    pygame.K_o: matrix.rot_matrix(changing_angle, 1, 2),
+    pygame.K_l: matrix.rot_matrix(-changing_angle, 1, 2)
+}
+
 
 movement_map = {
     pygame.K_w: speed_up,
@@ -89,14 +106,14 @@ while run:
 
             # ROTATION PLANES
 
-            if event.key in rotation_map:
-                plane, angle = rotation_map[event.key]
+            if event.key in rotation_map_new:
+                rotation_matrix = rotation_map_new[event.key]
 
                 if rot_cam:
-                    camera = camera.rotate(plane, angle)
+                    camera = camera.rotate(rotation_matrix)
                 else:
                   for i in range(len(mesh_4d.vertices)):   
-                    mesh_4d.vertices[i] = transform.rotate(mesh_4d.vertices[i], plane, angle)
+                    mesh_4d.vertices[i] = rotation_matrix * mesh_4d.vertices[i]
             
                 geometry_changed = True
     
