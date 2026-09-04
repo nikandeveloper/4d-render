@@ -8,8 +8,8 @@ EPSILON = 0.01
 def clipping(camera, A, B):
 
 
-  da = A.sub(camera.position).dot(camera.normal_vector)
-  db = B.sub(camera.position).dot(camera.normal_vector)
+  da = (A - camera.position).dot(camera.normal_vector)
+  db = (B - camera.position).dot(camera.normal_vector)
 
   Anew = A
   Bnew = B
@@ -18,10 +18,10 @@ def clipping(camera, A, B):
     return None
   elif da > EPSILON and db <= EPSILON:
     t = (EPSILON - da) / (db - da)
-    Bnew = A.add((B.sub(A)).multiply(t))
+    Bnew = A + ((B - A) * t)
   elif da <= EPSILON and db > EPSILON:
     t = (EPSILON - da) / (db - da)
-    Anew = A.add((B.sub(A)).multiply(t))    
+    Anew = A + ((B - A) * t)
         
   current_vertex = None
 
@@ -30,11 +30,11 @@ def clipping(camera, A, B):
 
 
 def project_point_3dto2d(camera: "Camera4D", point: "Vector3"):
-  if ((point.sub(camera.position.toVector3())).dot(camera.normal_vector.toVector3())) > EPSILON:
+  if (((point - camera.position.toVector3())).dot(camera.normal_vector.toVector3())) > EPSILON:
                 
-    vector_coefficient_3d_projection = ((camera.normal_vector.toVector3()).length()*camera.distance) / (point.sub(camera.position.toVector3())).dot(camera.normal_vector.toVector3())
+    vector_coefficient_3d_projection = ((camera.normal_vector.toVector3()).length()*camera.distance) / ((point - camera.position.toVector3())).dot(camera.normal_vector.toVector3())
 
-    point_2d = camera.position.toVector3().add(point.sub(camera.position.toVector3()).multiply(vector_coefficient_3d_projection))
+    point_2d = camera.position.toVector3() + ((point - camera.position.toVector3()) * vector_coefficient_3d_projection)
 
     return point_2d.toVector2()
         
@@ -43,11 +43,11 @@ def project_point_3dto2d(camera: "Camera4D", point: "Vector3"):
 
 
 def project_point_4dto3d(camera: "Camera4D", current_vertex: "Vector4"):
-  if ((current_vertex.sub(camera.position)).dot(camera.normal_vector)) > EPSILON:
+  if (((current_vertex - camera.position)).dot(camera.normal_vector)) > EPSILON:
 
-    vector_coefficient_4d_projection = (camera.normal_vector.length() * camera.distance) / (current_vertex.sub(camera.position)).dot(camera.normal_vector)
+    vector_coefficient_4d_projection = (camera.normal_vector.length() * camera.distance) / ((current_vertex - camera.position)).dot(camera.normal_vector)
 
-    point = camera.position.add(current_vertex.sub(camera.position).multiply(vector_coefficient_4d_projection))
+    point = camera.position + ((current_vertex - camera.position) * vector_coefficient_4d_projection)
 
     return point.toVector3()
 
