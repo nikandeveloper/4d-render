@@ -62,7 +62,7 @@ The calculations related to 4D rotation and 4D to 3D projection are:
 ![4D Calcualtions](assets/Calculations.pdf)
 
 Rotation can also be done using rotation matrices as explained here:
-![4D Calcualtions](assets/Rotation_Matrix_4D.pdf)
+![4D Matrix rotation](assets/Rotation_Matrix_4D.pdf)
 
 
     
