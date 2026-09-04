@@ -8,7 +8,7 @@ class Vector4:
     z: float
     w: float
 
-    def sub(self, other: "Vector4") -> Vector4:
+    def __sub__(self, other: "Vector4") -> Vector4:
 
         return Vector4(        
             self.x - other.x,
@@ -18,7 +18,7 @@ class Vector4:
         )
 
 
-    def add(self, other: "Vector4") -> Vector4:
+    def __add__(self, other: "Vector4") -> Vector4:
 
         return Vector4(  
             self.x + other.x,
@@ -28,7 +28,7 @@ class Vector4:
         )
 
 
-    def multiply(self, other: "float") -> Vector4:
+    def __mul__(self, other: "float") -> Vector4:
 
         return Vector4(
             self.x * other,
@@ -55,7 +55,6 @@ class Vector4:
     def toVector3(self) -> Vector3:
         return Vector3(self.x, self.y, self.z)
 
-
     def toVector2(self) -> Vector2:
         return Vector2(self.x, self.y)
 
@@ -66,10 +65,10 @@ class Vector4:
 @dataclass(frozen=True)
 class Vector3:
     x: float
-    y: float
-    z: float
+    y: float 
+    z: float 
 
-    def sub(self, other: "Vector3") -> Vector3:
+    def __sub__(self, other: "Vector3") -> Vector3:
 
         return Vector3(
             self.x - other.x,
@@ -79,7 +78,7 @@ class Vector3:
         )
 
 
-    def add(self, other: "Vector3") -> Vector3:
+    def __add__(self, other: "Vector3") -> Vector3:
 
         return Vector3(
             self.x + other.x,
@@ -89,7 +88,7 @@ class Vector3:
         )
 
 
-    def multiply(self, other: "float") -> Vector3:
+    def __mul__(self, other: "float") -> Vector3:
         return Vector3(
             self.x * other,
             self.y * other,
@@ -122,7 +121,7 @@ class Vector2:
     x: float
     y: float
 
-    def sub(self, other: "Vector2") -> Vector2:
+    def __sub__(self, other: "Vector2") -> Vector2:
 
         return Vector2(        
             self.x - other.x,
@@ -130,16 +129,15 @@ class Vector2:
         )
 
 
-    def add(self, other: "Vector2") -> Vector2:
+    def __add__(self, other: "Vector2") -> Vector2:
 
         return Vector2(
             self.x + other.x,
             self.y + other.y
-
         )
 
 
-    def multiply(self, other: "float") -> Vector2:
+    def __mul__(self, other: "float") -> Vector2:
 
         return Vector2(
             self.x * other,
