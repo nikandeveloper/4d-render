@@ -1,19 +1,19 @@
 import math
 import pygame
-from camera import * 
-from vector import *
-from geometry import *
+import camera
+import vector
+import geometry
 import transform 
-from projection import *
+import projection
 import matrix
 
 
-mesh_4d = Mesh4D([], [], [])
+mesh_4d = geometry.Mesh4D([], [], [])
 mesh_4d.load_mesh("data.dots")
 
-camera = Camera4D(Vector4(0,0,0,0), Vector4(1, 1, 1, 1), 5)
+camera = camera.Camera4D(vector.Vector4(0,0,0,0), vector.Vector4(1, 1, 1, 1), 5)
 
-mesh_2d = Mesh2D([], [], [])
+mesh_2d = geometry.Mesh2D([], [], [])
 
 screen_size = (1600, 900)
 
@@ -28,14 +28,14 @@ geometry_changed = True
 speed = 0.05
 
 
-speed_up = Vector4(0, -speed, 0, 0)
-speed_down = Vector4(0, speed, 0, 0)
-speed_right = Vector4(speed, 0, 0, 0)
-speed_left = Vector4(-speed, 0, 0, 0)
-speed_forward = Vector4(0, 0, speed, 0)
-speed_backward = Vector4(0, 0, -speed, 0)
-speed_w_p = Vector4(0, 0, 0, speed)
-speed_w_m = Vector4(0, 0, 0, -speed)
+speed_up = vector.Vector4(0, -speed, 0, 0)
+speed_down = vector.Vector4(0, speed, 0, 0)
+speed_right = vector.Vector4(speed, 0, 0, 0)
+speed_left = vector.Vector4(-speed, 0, 0, 0)
+speed_forward = vector.Vector4(0, 0, speed, 0)
+speed_backward = vector.Vector4(0, 0, -speed, 0)
+speed_w_p = vector.Vector4(0, 0, 0, speed)
+speed_w_m = vector.Vector4(0, 0, 0, -speed)
 
 
 rotation_map_old = {
@@ -121,7 +121,7 @@ while run:
     
     window.fill((0,0,0))
     if geometry_changed:
-        mesh_2d = project(camera, mesh_4d)
+        mesh_2d = projection.project(camera, mesh_4d)
         geometry_changed = False
 
     vertices_2d = mesh_2d.vertices
