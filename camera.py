@@ -9,7 +9,7 @@ class Camera4D:
     distance: float
 
     def move(self, speed: Vector4):
-        return Camera4D(self.position.add(speed), self.normal_vector, self.distance)
+        return Camera4D(self.position + speed, self.normal_vector, self.distance)
 
     def rotate_panel(self, plane: str, angle):
         if plane == "XY":
