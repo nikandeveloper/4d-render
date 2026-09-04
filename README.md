@@ -1,5 +1,5 @@
 # 4d-render
-A 4D render with its own file format '.dots' reading four dimensional data in a specific format then projecting it into 3D coordinates and then projecting those to 2D points and rendering these at last. along with 4D rotation 
+A 4D render with its own file format '.dots' reading four dimensional data in a specific format then projecting it into 3D coordinates and then projecting those to 2D points and rendering these at last. along with 4D rotation using both rotation matrices and simple rotational planes
 
 ![Tesseract rendered in 4D](assets/tesseract.png)
 
@@ -58,10 +58,10 @@ This project uses plane/hyperplane projection to turn 4D vertices into 2D points
 The rotation is simply rotating along rotation planes:
 ![4D renderer pipeline](assets/diagram_rotating.png)
 
-The calculations related to 4D rotation and 4D to 3D projection are:
+The calculations related to 4D rotation and 4D to 3D projection are in the pdf:
 ![4D Calcualtions](assets/Calculations.pdf)
 
-Rotation can also be done using rotation matrices as explained here:
+Rotation can also be done using rotation matrices as explained here in the pdf:
 ![4D Matrix rotation](assets/Rotation_Matrix_4D.pdf)
 
 
@@ -75,7 +75,7 @@ load you data into data.dots
    
 and run 4d_render.py
 
-you might have to tackle a bit with the position and rotation to see the tesseract 
+IF you are using the tesseract in the repo you might have to tackle a bit with the position and rotation to see the tesseract 
 
 
 The project is right now educational and therefore fully free of any licensing.
